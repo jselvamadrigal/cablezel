@@ -16,7 +16,7 @@ public class Conexion {
     public Conexion() {
         try {
             Class.forName("org.postgresql.Driver");
-            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/CABLEZEL", "JosueAdmin", "admin");
+            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cablezel", "JosueAdmin", "admin");
             st = conexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         } catch (Exception ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);

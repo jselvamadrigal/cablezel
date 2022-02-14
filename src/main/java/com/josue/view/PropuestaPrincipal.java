@@ -71,9 +71,6 @@ public class PropuestaPrincipal extends Application implements Initializable {
         }
     }
 
-
-
-
     public void mostrar_facturar(MouseEvent mouseEvent) {
     }
 
@@ -95,7 +92,6 @@ public class PropuestaPrincipal extends Application implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     public void mostrar_usuarios(MouseEvent mouseEvent) {
         try {

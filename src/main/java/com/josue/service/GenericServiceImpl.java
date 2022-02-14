@@ -13,7 +13,7 @@ public class GenericServiceImpl<T> implements IGenericService<T> {
 
     public GenericServiceImpl(Class<T> cl, SessionFactory sessionFactory) {
         this.cl = cl;
-        dao = new GenericDAOImpl<>(cl, sessionFactory);
+        dao = new GenericDAOImpl<T>(cl, sessionFactory);
     }
 
     @Override

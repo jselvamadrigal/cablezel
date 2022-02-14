@@ -34,7 +34,7 @@ public class SignUpController implements Initializable {
 
     public void registrarUsuarios(ActionEvent actionEvent) {
 
-        IGenericService<Usuario> usuarioService = new GenericServiceImpl<Usuario>(Usuario.class, HibernateUtil.getSessionFactory());
+        IGenericService<Usuario> usuarioService = new GenericServiceImpl<>(Usuario.class, HibernateUtil.getSessionFactory());
 
         String nombres = txtNombres.getText();
         String apellidos = txtApellidos.getText();
@@ -73,6 +73,5 @@ public class SignUpController implements Initializable {
     public void cerrarRegistrarseMouseClick(MouseEvent mouseEvent) {
         Platform.exit();
     }
-
 
 }

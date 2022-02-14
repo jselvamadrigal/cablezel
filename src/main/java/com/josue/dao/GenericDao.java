@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 public class GenericDao {
     private static GenericDao genericDao = null;
 
-    private SessionFactory factory;
+    private final SessionFactory factory;
     private Transaction transaccion;
 
     public GenericDao()
@@ -25,46 +25,29 @@ public class GenericDao {
         return genericDao;
     }
 
-    public boolean insertar(Object o)
+    public void insertar(Object o)
     {
-        boolean retorno = false;
-        Session session = factory.openSession();
-        try {
-           transaccion = session.beginTransaction();
-           session.save(o);
-           transaccion.commit();
-           retorno = true;
-        }
-        catch (Exception e)
-        {
+        try (Session session = factory.openSession()) {
+            transaccion = session.beginTransaction();
+            session.save(o);
+            transaccion.commit();
+        } catch (Exception e) {
             transaccion.rollback();
-            retorno = false;
             e.printStackTrace();
         }
-        finally {
-            session.close();
-        }
-        return retorno;
     }
 
     public boolean eliminar(Object o)
     {
         boolean retorno = false;
-        Session session = factory.openSession();
-        try {
+        try (Session session = factory.openSession()) {
             transaccion = session.beginTransaction();
             session.delete(o);
             transaccion.commit();
             retorno = true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             transaccion.rollback();
-            retorno = false;
             e.printStackTrace();
-        }
-        finally {
-            session.close();
         }
         return retorno;
 
